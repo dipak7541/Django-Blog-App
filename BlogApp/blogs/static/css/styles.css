@@ -1,0 +1,14 @@
+body{
+    background-color: aquamarine;
+}
+.navbar{
+    height: 80px;
+    
+}
+.navbar-brand{
+    font-weight: 900;
+    padding-left:20px;
+}
+.nav-item{
+    font-weight: 700;
+}
