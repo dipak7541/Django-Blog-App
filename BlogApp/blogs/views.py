@@ -4,6 +4,8 @@ from blogs.models import AutherRegistration, BlogModel
 
 from django.views.generic import TemplateView, CreateView
 from blogs.forms import AutherRegistrationForm,LoginForm
+from django.contrib.auth import authenticate
+
 
 # Create your views here.
 
@@ -18,8 +20,3 @@ class BlogCreateView(CreateView):
     form_class=AutherRegistrationForm
     template_name="blogs/createauther.html"
     success_url="/blogs/blogpage/"
-
-""" class AutherLoginView(LoginView):
-    template_name = 'bolgs/login.html'
-    from_class = forms.LoginForm """
-    

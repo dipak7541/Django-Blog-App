@@ -13,7 +13,7 @@ class AutherRegistration(AbstractUser):
     
 
 class BlogModel(models.Model):
-    auther=models.OneToOneField(AutherRegistration,on_delete=models.CASCADE)
+    auther=models.ForeignKey(AutherRegistration,on_delete=models.CASCADE)
     tittle=models.CharField(max_length=200,null=False)
     description=models.TextField()
     created_at=models.DateTimeField(auto_now_add=True)
