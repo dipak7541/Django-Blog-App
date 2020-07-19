@@ -12,3 +12,9 @@ body{
 .nav-item{
     font-weight: 700;
 }
+form{
+    padding:20px 0 0 100px;
+}
+#btn{
+    padding:10px 10px 10px 10px;
+}

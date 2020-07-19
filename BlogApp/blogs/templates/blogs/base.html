@@ -15,12 +15,12 @@
         <a class="navbar-brand" href="#">BLOGS</a>
           <div class="navbar-nav ml-auto">
             <a class="nav-item nav-link active" href="/blogs/blogpage/">Home</a>
-            <a class="nav-item nav-link" href="#">Add Blogs</a>
+            <a class="nav-item nav-link" href="/blogs/createblog/">Add Blogs</a>
             {% if request.user.is_authenticated %}
             <a class="nav-item nav-link" href="#">Logout</a>
             {% else %}
             <a class="nav-item nav-link" href="/blogs/createauther/">SignUp</a>
-            <a class="nav-item nav-link" href="#">SignIn</a>
+            <a class="nav-item nav-link" href="/blogs/login/">SignIn</a>
             {%endif%}
         </div>
     </nav>

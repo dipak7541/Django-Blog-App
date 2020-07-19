@@ -29,8 +29,7 @@ class LoginForm(forms.Form):
     username=forms.CharField(max_length=150)
     password=forms.CharField(max_length=128,widget=forms.PasswordInput())
 
-""" class BlogDataForm(forms.ModelForm):
-    auther=
+class BlogDataForm(forms.ModelForm):
     class Meta:
         model=BlogModel
-        fields=["title","description"] """
+        fields='__all__'
