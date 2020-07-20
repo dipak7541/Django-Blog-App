@@ -42,7 +42,22 @@ class AutherLoginView(TemplateView):
 class BlogUploadView(TemplateView):
     template_name='blogs/blogupload.html'
     success_url="blogs/blogpage/"
+    
+    def post(self, request, *args, **kwargs):
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            user=authenticate(username=form.cleaned_data["username"],
+                            password=form.cleaned_data["password"]  
+            )
+            if user:
+                print("sucess")
+                login(request,user)
 
+                return redirect("/blogs/blogpage/")
+        
+        else:
+            form = LoginForm() # remove this line
+        return render(request, self.template_name, {'form':form})
     
     def form_valid(self, form):
         data = form.process()

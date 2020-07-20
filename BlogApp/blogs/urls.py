@@ -6,5 +6,5 @@ urlpatterns=[
     path("createauther/",BlogCreateView.as_view(),name="createauther"),
     path("blogpage/",BlogView.as_view()),
     path("login/",AutherLoginView.as_view()),
-    path("createblog/",BlogUploadView.as_view())
+    path("login/",BlogUploadView.as_view())
 ]
