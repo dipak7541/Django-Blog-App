@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 class AutherRegistration(AbstractUser):
-    middle_name=models.CharField(max_length=150)
+    middle_name=models.CharField(max_length=150,blank=True)
     GENDER_CHOICES = (
     (0, 'male'),
     (1, 'female'),

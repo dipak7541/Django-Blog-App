@@ -17,55 +17,19 @@ class BlogView(TemplateView):
     template_name='blogs/blogpage.html'
 
 
-class BlogCreateView(CreateView):
+class AutherCreateView(CreateView):
     form_class=AutherRegistrationForm
     template_name="blogs/createauther.html"
     success_url="/blogs/blogpage/"
 
-class AutherLoginView(TemplateView):
-    template_name='blogs/login.html'
-    success_url="blogs/blogpage.html"
 
-    
-    def form_valid(self, form):
-        data = form.process()
-        return super(AutherLoginView, self).form_valid(form)
-
-    def get_context_data(self, **kwargs):
-        context = super(AutherLoginView, self).get_context_data(**kwargs)
-        form = LoginForm(self.request.POST or None)
-        context["form"] = form
-        #context["latest_article"] = latest_article
-
-        return context
-
-class BlogUploadView(TemplateView):
+class BlogUploadView(CreateView):
     template_name='blogs/blogupload.html'
-    success_url="blogs/blogpage/"
-    
-    def post(self, request, *args, **kwargs):
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            user=authenticate(username=form.cleaned_data["username"],
-                            password=form.cleaned_data["password"]  
-            )
-            if user:
-                print("sucess")
-                login(request,user)
+    form_class=BlogDataForm
+    success_url="/blogs/blogpage/"
 
-                return redirect("/blogs/blogpage/")
-        
-        else:
-            form = LoginForm() # remove this line
-        return render(request, self.template_name, {'form':form})
-    
-    def form_valid(self, form):
-        data = form.process()
-        return super(BlogUploadView, self).form_valid(form)
-
-    def get_context_data(self, **kwargs):
-        context = super(BlogUploadView, self).get_context_data(**kwargs)
-        form = BlogDataForm(self.request.POST or None)
-        context["form"] = form
-        #context["latest_article"] = latest_article
-        return context
+    def form_valid(self,form):
+        self.object=form.save(commit=False)
+        self.object.auther_id=self.request.user.id
+        self.object.save()
+        return super().form_valid(form)

@@ -125,3 +125,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL="blogs.AutherRegistration"
+LOGIN_URL='/blogs/login/'
+LOGIN_REDIRECT_URL = '/blogs/blogpage/'

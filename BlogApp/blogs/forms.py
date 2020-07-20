@@ -32,4 +32,4 @@ class LoginForm(forms.Form):
 class BlogDataForm(forms.ModelForm):
     class Meta:
         model=BlogModel
-        fields='__all__'
+        fields=["tittle", "description"]
